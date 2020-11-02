@@ -1,6 +1,7 @@
 import PySimpleGUI as sg
 import string
 import random
+import pyperclip
 
 class GeneratorScreen:
     def __init__(self):
@@ -21,7 +22,10 @@ class GeneratorScreen:
             if event == 'generate':
                 new_password = self.generate_password(values)
                 print(new_password)
-    
+            if event == 'copy':
+                pyperclip.copy(new_password)
+                print('Copied...')
+
     def generate_password(self, values, length=8):
         letters = string.ascii_letters
         numbers = string.digits
